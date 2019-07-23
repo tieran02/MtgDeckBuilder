@@ -35,7 +35,7 @@ namespace MTG_DeckBuilder_ViewModel
             Cards = new ObservableCollection<MTG_Card>();
             CurrentDeckCards = new ObservableCollection<MTG_Card>();
             AddCardToDeckCommand = new AddCardToDeckCommand(this);
-            //GetCards();
+            GetCards();
         }
 
         public void AddCardToDeck(MTG_Card card)

@@ -38,7 +38,7 @@ namespace MTG_DeckBuilder_DataAccess
                     where s.code == setCode
                     select s.MTG_Card;
 
-                var cards = await query.FirstOrDefaultAsync();
+                var cards = await query.Take(8).FirstOrDefaultAsync();
                 if (cards != null)
                     mtgCards.AddRange(cards);
             }

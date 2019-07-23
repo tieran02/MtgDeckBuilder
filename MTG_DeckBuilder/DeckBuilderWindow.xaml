@@ -87,27 +87,46 @@
             </ListView>
         </DockPanel>
 
-        <ListBox ItemsSource="{Binding Cards}"
-                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-                 Background="SlateGray"
-                 SelectedItem="{Binding SelectedCard, Mode=OneWayToSource}">
+        <DockPanel Background="SlateGray">
+            <Button DockPanel.Dock="Left" Height="50" Margin="5">
+                <TextBlock Text="&lt;" FontSize="48" Margin="0 -12 0 0"/>
+            </Button>
+            <Button DockPanel.Dock="Right" Height="50" Margin="5">
+                <TextBlock Text="&gt;" FontSize="48" Margin="0 -12 0 0"/>
+            </Button>
 
-            <i:Interaction.Triggers>
-                <i:EventTrigger EventName="MouseDoubleClick">
-                    <i:InvokeCommandAction Command="{Binding AddCardToDeckCommand, Source={StaticResource vm}}" CommandParameter="{Binding SelectedCard ,Source={StaticResource vm}}"/>
-                </i:EventTrigger>
-            </i:Interaction.Triggers>
+            <TextBlock DockPanel.Dock="Bottom"
+                       Text="1/10"
+                       FontSize="24"
+                       TextAlignment="Center"/>
 
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel/>
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <uc:CardViewUserControl/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            <ListBox ItemsSource="{Binding Cards}"
+                     VerticalContentAlignment="Stretch" 
+                     HorizontalContentAlignment="Stretch"
+                     ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     SelectedItem="{Binding SelectedCard, Mode=OneWayToSource}"
+                     Background="SlateGray"
+                     BorderThickness="0">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding AddCardToDeckCommand, Source={StaticResource vm}}" CommandParameter="{Binding SelectedCard ,Source={StaticResource vm}}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="4" Rows="2"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <uc:CardViewUserControl/>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </DockPanel>
     </DockPanel>
 </Window>
