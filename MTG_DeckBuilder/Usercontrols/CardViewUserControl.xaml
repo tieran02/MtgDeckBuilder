@@ -1,0 +1,21 @@
+﻿<UserControl x:Class="MTG_DeckBuilder.Usercontrols.CardViewUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MTG_DeckBuilder.Usercontrols"
+             mc:Ignorable="d" d:DesignWidth="250" Height="336.794">
+    <StackPanel Width="223" 
+                Height="310"
+                Background="#4CFFFFFF">
+        <TextBlock Text="{Binding name}"
+                   TextAlignment="Center"
+                   DockPanel.Dock="Top"/>
+
+        <Image Source="{Binding image}" Stretch="Uniform" 
+               VerticalAlignment="Stretch" 
+               HorizontalAlignment="Stretch"
+               Margin="5"
+               DockPanel.Dock="Top"/>
+    </StackPanel>
+</UserControl>
