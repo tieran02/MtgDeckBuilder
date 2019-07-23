@@ -88,19 +88,26 @@
         </DockPanel>
 
         <DockPanel Background="SlateGray">
-            <Button DockPanel.Dock="Left" Height="50" Margin="5">
+            <Button DockPanel.Dock="Left" Height="50" Margin="5" Command="{Binding PageCommand}" CommandParameter="-1">
                 <TextBlock Text="&lt;" FontSize="48" Margin="0 -12 0 0"/>
             </Button>
-            <Button DockPanel.Dock="Right" Height="50" Margin="5">
+            <Button DockPanel.Dock="Right" Height="50" Margin="5" Command="{Binding PageCommand}" CommandParameter="1">
                 <TextBlock Text="&gt;" FontSize="48" Margin="0 -12 0 0"/>
             </Button>
 
             <TextBlock DockPanel.Dock="Bottom"
-                       Text="1/10"
                        FontSize="24"
-                       TextAlignment="Center"/>
+                       FontWeight="Bold"
+                       TextAlignment="Center">
+                <TextBlock.Text>
+                    <MultiBinding StringFormat=" {0}/{1}">
+                        <Binding Path="Cards.CurrentPage"/>
+                        <Binding Path="Cards.PageCount"/>
+                    </MultiBinding>
+                </TextBlock.Text>
+            </TextBlock>
 
-            <ListBox ItemsSource="{Binding Cards}"
+            <ListBox ItemsSource="{Binding Cards.Results}"
                      VerticalContentAlignment="Stretch" 
                      HorizontalContentAlignment="Stretch"
                      ScrollViewer.VerticalScrollBarVisibility="Disabled"

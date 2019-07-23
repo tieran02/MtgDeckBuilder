@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\AddCardToDeckCommand.cs" />
+    <Compile Include="Commands\ChangeCardsPageCommand.cs" />
     <Compile Include="DeckBuilderVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
