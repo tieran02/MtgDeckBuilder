@@ -12,7 +12,7 @@
                    DockPanel.Dock="Top"/>
 
         <Viewbox Margin="5">
-            <!--<Image Source="{Binding image}" Stretch="UniformToFill"/>-->
+            <Image Source="{Binding image}" Stretch="UniformToFill"/>
         </Viewbox>
     </DockPanel>
 </UserControl>
