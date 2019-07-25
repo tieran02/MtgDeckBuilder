@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using MTG_DeckBuilder_DataAccess;
 using MTG_DeckBuilder_Model;
 using MTG_DeckBuilder_ViewModel.Commands;
+using MTG_DeckBuilder_ViewModel.Helpers;
 
 namespace MTG_DeckBuilder_ViewModel
 {
@@ -30,6 +31,7 @@ namespace MTG_DeckBuilder_ViewModel
 
         public AddCardToDeckCommand AddCardToDeckCommand { get; set; }
         public ChangeCardsPageCommand PageCommand { get; set; }
+        public CardFilters CardFilters { get; set; }
 
         public DeckBuilderVM()
         {
@@ -37,6 +39,7 @@ namespace MTG_DeckBuilder_ViewModel
             CurrentDeckCards = new ObservableCollection<MTG_Card>();
             AddCardToDeckCommand = new AddCardToDeckCommand(this);
             PageCommand = new ChangeCardsPageCommand(this);
+            CardFilters = CardFilters.NONE;
             //GetCards();
         }
 
@@ -58,15 +61,20 @@ namespace MTG_DeckBuilder_ViewModel
             }
         }
 
-        private async void GetCardsBySearchText(int page)
+        public async void GetCardsBySearchText(int page)
         {
-            var cards = await DatabaseHelper.GetCardPagesByName(searchText,page);
+            var cards = await DatabaseHelper.GetCardPagesByName(searchText,page,CardFilters);
 
             Cards.CurrentPage = cards.CurrentPage;
             Cards.PageCount = cards.PageCount;
             Cards.PageSize = cards.PageSize;
             Cards.RowCount = cards.RowCount;
 
+            foreach (var card in cards.Results)
+            {
+                //get image url
+                card.image = $"https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={card.multiverseID}&type=card";
+            }
             Cards.Results = cards.Results;
             PageCommand.RaiseCanExecuteChanged();
 

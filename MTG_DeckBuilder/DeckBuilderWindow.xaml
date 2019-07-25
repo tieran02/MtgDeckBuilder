@@ -32,26 +32,45 @@
             <ToggleButton Width="32"
                           Height="32"
                           Margin="5 0"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe600;"
                           Background="Wheat"/>
             <ToggleButton Width="32"
                           Height="32"
                           Margin="5 0"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe601;"
                           Background="Blue"/>
             <ToggleButton Width="32"
                           Height="32"
                           Margin="5 0"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe602;"
+                          Foreground="White"
                           Background="Black"/>
             <ToggleButton Width="32"
                           Height="32"
                           Margin="5 0"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe603;"
                           Background="Red"/>
             <ToggleButton Width="32"
                           Height="32"
                           Margin="5 0"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe604;"
                           Background="Green"/>
             <ToggleButton Width="32"
                           Height="32"
                           Margin="5 0"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe904;"
                           Background="Gray"/>
         </StackPanel>
 
@@ -114,7 +133,8 @@
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                      SelectedItem="{Binding SelectedCard, Mode=OneWayToSource}"
                      Background="SlateGray"
-                     BorderThickness="0">
+                     BorderThickness="0"
+                     VirtualizingStackPanel.IsVirtualizing ="False">
 
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="MouseDoubleClick">

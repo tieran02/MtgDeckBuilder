@@ -72,7 +72,7 @@ namespace MTG_DeckBuilder_Model
 
             modelBuilder.Entity<MTG_Card>()
                 .Property(e => e.cost)
-                .IsUnicode(false);
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<MTG_Card>()
                 .HasMany(e => e.MTG_Card_Type)

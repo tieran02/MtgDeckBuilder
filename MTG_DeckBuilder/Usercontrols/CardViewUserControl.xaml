@@ -9,6 +9,7 @@
         <TextBlock Text="{Binding name}"
                    TextAlignment="Center"
                    FontWeight="Bold"
+                   FontSize="14"
                    DockPanel.Dock="Top"/>
 
         <Viewbox Margin="5">

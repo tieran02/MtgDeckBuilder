@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using MTG_DeckBuilder_Model;
+using MTG_DeckBuilder_ViewModel.Helpers;
 
 
 namespace MTG_DeckBuilder_DataAccess
@@ -83,7 +84,7 @@ namespace MTG_DeckBuilder_DataAccess
             return mtgCards;
         }
 
-        public static async Task<PagedResult<MTG_Card>> GetCardPagesByName(string name, int page)
+        public static async Task<PagedResult<MTG_Card>> GetCardPagesByName(string name, int page, CardFilters filters = CardFilters.NONE)
         {
             const int PAGE_SIZE = 8;
             var result = new PagedResult<MTG_Card>();
@@ -93,15 +94,19 @@ namespace MTG_DeckBuilder_DataAccess
             using (var context = new MtgContext())
             {
                 var query = from c in context.MTG_Card
-                    where c.name.Contains(name)
+                    where c.name.Contains(name) && c.MTG_Set.MTG_SetType.typeName != "promo"
                     select c;
+
+                CardFilterToQuery.ApplyFilters(filters, ref query);
+
 
                 result.RowCount = query.Count();
                 var pageCount = (double) result.RowCount / PAGE_SIZE;
                 result.PageCount = (int) Math.Ceiling(pageCount);
 
                 var skip = (page - 1) * PAGE_SIZE;
-                result.Results = await query.OrderBy(c => c.MTG_Set.releaseDate).Skip(skip).Take(PAGE_SIZE).ToListAsync();
+
+                result.Results = await query.OrderByDescending(c => c.MTG_Set.releaseDate).Skip(skip).Take(PAGE_SIZE).ToListAsync();
             }
 
             return result;

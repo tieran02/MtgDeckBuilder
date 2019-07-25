@@ -4,7 +4,9 @@
              xmlns:local="clr-namespace:MTG_DeckBuilder"
              StartupUri="DeckBuilderWindow.xaml">
     <Application.Resources>
-         
+        <FontFamily x:Key="MtgSetFonts">pack://application:,,,/Fonts/#keyrune</FontFamily>
+        <FontFamily x:Key="MtgManaFonts">pack://application:,,,/Fonts/#mana</FontFamily>
+
     </Application.Resources>
 
 </Application>

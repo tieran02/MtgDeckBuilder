@@ -42,21 +42,7 @@ namespace MTG_DeckBuilder_ViewModel.Commands
         public void Execute(object parameter)
         {
             int pageOffset = int.Parse(parameter.ToString());
-            setVmCards(pageOffset);
-        }
-
-
-        private async void setVmCards(int pageOffset)
-        {
-            var cards = await DatabaseHelper.GetCardPagesByName(VM.SearchText, VM.Cards.CurrentPage + pageOffset);
-
-            VM.Cards.CurrentPage = cards.CurrentPage;
-            VM.Cards.PageCount = cards.PageCount;
-            VM.Cards.PageSize = cards.PageSize;
-            VM.Cards.RowCount = cards.RowCount;
-
-            VM.Cards.Results = cards.Results;
-            RaiseCanExecuteChanged();
+            VM.GetCardsBySearchText(VM.Cards.CurrentPage + pageOffset);
         }
     }
 }
