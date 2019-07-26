@@ -30,6 +30,7 @@ namespace MTG_DeckBuilder_ViewModel
         public MTG_Card SelectedCard { get; set; }
 
         public AddCardToDeckCommand AddCardToDeckCommand { get; set; }
+        public RemoveCardFromDeck RemoveCardFromDeckCommand { get; set; }
         public ChangeCardsPageCommand PageCommand { get; set; }
         public ToggleFilterCommand ToggleFilterCommand { get; set; }
         public CardFilters CardFilters { get; set; }
@@ -39,15 +40,11 @@ namespace MTG_DeckBuilder_ViewModel
             Cards = new PagedResult<MTG_Card>();
             CurrentDeckCards = new ObservableCollection<MTG_Card>();
             AddCardToDeckCommand = new AddCardToDeckCommand(this);
+            RemoveCardFromDeckCommand = new RemoveCardFromDeck(this);
             PageCommand = new ChangeCardsPageCommand(this);
             ToggleFilterCommand = new ToggleFilterCommand(this);
             CardFilters = CardFilters.NONE;
             SearchText = "";
-        }
-
-        public void AddCardToDeck(MTG_Card card)
-        {
-            CurrentDeckCards.Add(card);
         }
 
         public async void GetCardsBySearchText(int page)

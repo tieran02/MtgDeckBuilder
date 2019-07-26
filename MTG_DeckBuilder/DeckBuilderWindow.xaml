@@ -111,7 +111,15 @@
                        DockPanel.Dock="Bottom"
                        TextAlignment="Center"/>
             <ListView ItemsSource="{Binding CurrentDeckCards}"
-                      Height="auto">
+                      Height="auto"
+                      SelectedItem="{Binding SelectedCard, Mode=OneWayToSource}">
+
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseDoubleClick">
+                        <i:InvokeCommandAction Command="{Binding RemoveCardFromDeckCommand, Source={StaticResource vm}}" CommandParameter="{Binding SelectedCard ,Source={StaticResource vm}}"/>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding name}"/>

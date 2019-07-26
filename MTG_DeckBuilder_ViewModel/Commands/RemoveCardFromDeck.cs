@@ -8,11 +8,11 @@ using MTG_DeckBuilder_Model;
 
 namespace MTG_DeckBuilder_ViewModel.Commands
 {
-    public class AddCardToDeckCommand : ICommand
+    public class RemoveCardFromDeck : ICommand
     {
         public DeckBuilderVM VM { get; set; }
 
-        public AddCardToDeckCommand(DeckBuilderVM vm)
+        public RemoveCardFromDeck(DeckBuilderVM vm)
         {
             VM = vm;
         }
@@ -25,7 +25,7 @@ namespace MTG_DeckBuilder_ViewModel.Commands
         public void Execute(object parameter)
         {
             var card = parameter as MTG_Card;
-            VM.CurrentDeckCards.Add(card);
+            VM.CurrentDeckCards.Remove(card);
         }
 
         public event EventHandler CanExecuteChanged;
