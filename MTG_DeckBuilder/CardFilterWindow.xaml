@@ -1,0 +1,183 @@
+﻿<Window x:Class="MTG_DeckBuilder.CardFilterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MTG_DeckBuilder"
+        xmlns:mtgDeckBuilderModel="clr-namespace:MTG_DeckBuilder_Model;assembly=MTG_DeckBuilder_Model"
+        mc:Ignorable="d"
+        Title="CardFilterWindow" Height="266.667" Width="485.868">
+    <StackPanel>
+        <TextBlock TextAlignment="Center"
+                   FontSize="12"
+                   Margin="0 5 0 0"
+                   Text="Converted Mana Cost"/>
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <ToggleButton x:Name="ZeroManaButton"
+                          Margin="5"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe605;"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.ZERO_MANA}"/>
+            <ToggleButton x:Name="OneManaButton"
+                          Margin="5"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe606;"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.ONE_MANA}"/>
+            <ToggleButton x:Name="TwoManaButton"
+                          Margin="5"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe607;"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.TWO_MANA}"/>
+            <ToggleButton x:Name="ThreeManaButton"
+                          Margin="5"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe608;"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.THREE_MANA}"/>
+            <ToggleButton x:Name="FourManaButton"
+                          Margin="5"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe609;"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.FOUR_MANA}"/>
+            <ToggleButton x:Name="FiveManaButton"
+                          Margin="5"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe60a;"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.FIVE_MANA}"/>
+            <ToggleButton x:Name="SixManaButton"
+                          Margin="5"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe60b;"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.SIX_MANA}"/>
+            <ToggleButton x:Name="SevenManaButton"
+                          Margin="5"
+                          FontSize="24"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="&#xe60c;+"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.SEVEN_MANA}"/>
+        </WrapPanel>
+        <TextBlock TextAlignment="Center"
+                   FontSize="12"
+                   Text="Rarity"/>
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <ToggleButton x:Name="CommonButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Common"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.COMMMON}"/>
+            <ToggleButton x:Name="UncommonButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Uncommon"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.UNCOMMMON}"/>
+            <ToggleButton x:Name="RareButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Rare"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.RARE}"/>
+            <ToggleButton x:Name="MythicButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Mythic"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.MYTHIC_RARE}"/>
+        </WrapPanel>
+        <TextBlock TextAlignment="Center"
+                   FontSize="12"
+                   Text="Type"/>
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <ToggleButton x:Name="LandButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Land"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.LAND}"/>
+            <ToggleButton x:Name="CreatureButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Creature"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.CREATURE}"/>
+            <ToggleButton x:Name="InstantButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Instant"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.INSTANT}"/>
+            <ToggleButton x:Name="SorceryButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Sorcery"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.SORCERY}"/>
+            <ToggleButton x:Name="EnchantmentButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Enchantment"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.ENCHANTMENT}"/>
+            <ToggleButton x:Name="ArtifactButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Artifact"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.ARTIFACT}"/>
+            <ToggleButton x:Name="PlaneswalkerButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Planeswalker"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.PLANESWALKER}"/>
+        </WrapPanel>
+        <TextBlock TextAlignment="Center"
+                   FontSize="12"
+                   Text="Legality"/>
+        <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <ToggleButton x:Name="StandardButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Standard"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.STANDARD}"/>
+            <ToggleButton x:Name="ModernButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Modern"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.MODERN}"/>
+            <ToggleButton x:Name="CommanderButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Commander"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.COMMANDER}"/>
+            <ToggleButton x:Name="LegacyButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Legacy"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.LEGACY}"/>
+            <ToggleButton x:Name="VintageButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Vintage"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.VINTAGE}"/>
+            <ToggleButton x:Name="PauperButton"
+                          Margin="5"
+                          FontSize="14"
+                          FontFamily="{StaticResource MtgManaFonts}"
+                          Content="Pauper"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.PAUPER}"/>
+        </WrapPanel>
+    </StackPanel>
+</Window>

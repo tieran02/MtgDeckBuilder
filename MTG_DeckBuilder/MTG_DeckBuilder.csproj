@@ -77,12 +77,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CardFilterWindow.xaml.cs">
+      <DependentUpon>CardFilterWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrols\CardViewUserControl.xaml.cs">
       <DependentUpon>CardViewUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Usercontrols\ManaCurveUserControl.xaml.cs">
       <DependentUpon>ManaCurveUserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="CardFilterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DeckBuilderWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

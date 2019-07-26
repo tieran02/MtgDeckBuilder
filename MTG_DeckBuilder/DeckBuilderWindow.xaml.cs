@@ -30,5 +30,13 @@ namespace MTG_DeckBuilder
         {
             Close();
         }
+
+        private void ExtraFiltersButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var filterWindow = new CardFilterWindow();
+            filterWindow.DataContext = ContentPanel.DataContext;
+            filterWindow.LoadFilters();
+            filterWindow.ShowDialog();
+        }
     }
 }
