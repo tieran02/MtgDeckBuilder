@@ -7,6 +7,7 @@
         xmlns:uc="clr-namespace:MTG_DeckBuilder.Usercontrols"
         xmlns:vm="clr-namespace:MTG_DeckBuilder_ViewModel;assembly=MTG_DeckBuilder_ViewModel"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:mtgDeckBuilderModel="clr-namespace:MTG_DeckBuilder_Model;assembly=MTG_DeckBuilder_Model"
         mc:Ignorable="d"
         Title="DeckBuilderWindow" Height="720" Width="1322.218">
     <Window.Resources>
@@ -35,14 +36,16 @@
                           FontSize="24"
                           FontFamily="{StaticResource MtgManaFonts}"
                           Content="&#xe600;"
-                          Background="Wheat"/>
+                          Background="Wheat"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.WHITE}"/>
             <ToggleButton Width="32"
                           Height="32"
                           Margin="5 0"
                           FontSize="24"
                           FontFamily="{StaticResource MtgManaFonts}"
                           Content="&#xe601;"
-                          Background="Blue"/>
+                          Background="Blue"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.BLUE}"/>
             <ToggleButton Width="32"
                           Height="32"
                           Margin="5 0"
@@ -50,28 +53,32 @@
                           FontFamily="{StaticResource MtgManaFonts}"
                           Content="&#xe602;"
                           Foreground="White"
-                          Background="Black"/>
+                          Background="Black"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.BLACK}"/>
             <ToggleButton Width="32"
                           Height="32"
                           Margin="5 0"
                           FontSize="24"
                           FontFamily="{StaticResource MtgManaFonts}"
                           Content="&#xe603;"
-                          Background="Red"/>
+                          Background="Red"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.RED}"/>
             <ToggleButton Width="32"
                           Height="32"
                           Margin="5 0"
                           FontSize="24"
                           FontFamily="{StaticResource MtgManaFonts}"
                           Content="&#xe604;"
-                          Background="Green"/>
+                          Background="Green"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.GREEN}"/>
             <ToggleButton Width="32"
                           Height="32"
                           Margin="5 0"
                           FontSize="24"
                           FontFamily="{StaticResource MtgManaFonts}"
                           Content="&#xe904;"
-                          Background="Gray"/>
+                          Background="Gray"
+                          Command="{Binding ToggleFilterCommand}" CommandParameter="{x:Static mtgDeckBuilderModel:CardFilters.COLOURLESS}"/>
         </StackPanel>
 
         <DockPanel DockPanel.Dock="Right" 

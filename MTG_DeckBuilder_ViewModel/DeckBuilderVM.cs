@@ -31,6 +31,7 @@ namespace MTG_DeckBuilder_ViewModel
 
         public AddCardToDeckCommand AddCardToDeckCommand { get; set; }
         public ChangeCardsPageCommand PageCommand { get; set; }
+        public ToggleFilterCommand ToggleFilterCommand { get; set; }
         public CardFilters CardFilters { get; set; }
 
         public DeckBuilderVM()
@@ -39,6 +40,7 @@ namespace MTG_DeckBuilder_ViewModel
             CurrentDeckCards = new ObservableCollection<MTG_Card>();
             AddCardToDeckCommand = new AddCardToDeckCommand(this);
             PageCommand = new ChangeCardsPageCommand(this);
+            ToggleFilterCommand = new ToggleFilterCommand(this);
             CardFilters = CardFilters.NONE;
             //GetCards();
         }

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
+using LinqKit;
 using MTG_DeckBuilder_Model;
 using MTG_DeckBuilder_ViewModel.Helpers;
 
@@ -106,7 +107,8 @@ namespace MTG_DeckBuilder_DataAccess
 
                 var skip = (page - 1) * PAGE_SIZE;
 
-                result.Results = await query.OrderByDescending(c => c.MTG_Set.releaseDate).Skip(skip).Take(PAGE_SIZE).ToListAsync();
+
+                result.Results = await query.AsExpandable().OrderByDescending(c => c.MTG_Set.releaseDate).Skip(skip).Take(PAGE_SIZE).ToListAsync();
             }
 
             return result;
