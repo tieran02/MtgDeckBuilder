@@ -42,25 +42,12 @@ namespace MTG_DeckBuilder_ViewModel
             PageCommand = new ChangeCardsPageCommand(this);
             ToggleFilterCommand = new ToggleFilterCommand(this);
             CardFilters = CardFilters.NONE;
-            //GetCards();
+            SearchText = "";
         }
 
         public void AddCardToDeck(MTG_Card card)
         {
             CurrentDeckCards.Add(card);
-        }
-
-        private async void GetCards()
-        {
-            var cards = await DatabaseHelper.GetAllCardsFromSetAsync("WAR");
-
-            Cards.Results.Clear();
-            foreach (var card in cards)
-            {
-                //get image url
-                card.image = $"https://gatherer.wizards.com/Handlers/Image.ashx?multiverseid={card.multiverseID}&type=card";
-                Cards.Results.Add(card);
-            }
         }
 
         public async void GetCardsBySearchText(int page)
