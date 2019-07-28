@@ -80,6 +80,9 @@
     <Compile Include="CardFilterWindow.xaml.cs">
       <DependentUpon>CardFilterWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrols\CardViewUserControl.xaml.cs">
       <DependentUpon>CardViewUserControl.xaml</DependentUpon>
     </Compile>
@@ -101,6 +104,10 @@
     <Compile Include="DeckBuilderWindow.xaml.cs">
       <DependentUpon>DeckBuilderWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Usercontrols\CardViewUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

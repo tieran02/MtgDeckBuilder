@@ -1,0 +1,55 @@
+﻿<Window x:Class="MTG_DeckBuilder.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MTG_DeckBuilder"
+        xmlns:vm="clr-namespace:MTG_DeckBuilder_ViewModel;assembly=MTG_DeckBuilder_ViewModel"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="206.787" Width="354.302">
+    <Window.Resources>
+        <vm:LoginVM x:Key="login"/>
+    </Window.Resources>
+
+    <Grid x:Name="containerGrid"
+          DataContext="{StaticResource login}">
+        <StackPanel x:Name="loginStackPanel"
+                    Margin="20 0"
+                    VerticalAlignment="Center">
+            <TextBlock Text="Username" TextAlignment="Center"/>
+            <TextBox Text="{Binding User.username, Mode=TwoWay}"/>
+            <TextBlock Text="Password" TextAlignment="Center"/>
+            <PasswordBox Name="loginPassword" Margin="0 5 0 0"/>
+            <Button Margin="0 5 0 0"
+                    Command="{Binding LoginCommand}"
+                    CommandParameter="{Binding ElementName=loginPassword}"
+                    Content="Login"/>
+            <Button x:Name="noAccountButton"
+                    Content="Register an account?"
+                    HorizontalAlignment="Right"
+                    Margin="0 5 0 0"
+                    Click="NoAccountButton_OnClick"/>
+        </StackPanel>
+        <StackPanel x:Name="registerStackPanel"
+                    Margin="20 0"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed">
+            <TextBlock Text="Username" TextAlignment="Center"/>
+            <TextBox Text="{Binding User.username, Mode=TwoWay}"/>
+            <TextBlock Text="Email" TextAlignment="Center"/>
+            <TextBox Text="{Binding User.email, Mode=TwoWay}"/>
+            <TextBlock Text="Password" TextAlignment="Center"/>
+            <PasswordBox Name="registerPassword" Margin="0 5 0 0"/>
+            <Button Margin="0 5 0 0"
+                    Command="{Binding RegisterCommand}"
+                    CommandParameter="{Binding ElementName=registerPassword}"
+                    Content="Register"
+                    />
+            <Button x:Name="haveAccountButton"
+                    Content="Already have an account?"
+                    HorizontalAlignment="Right"
+                    Margin="0 5 0 0"
+                    Click="HaveAccountButton_OnClick"/>
+        </StackPanel>
+    </Grid>
+</Window>

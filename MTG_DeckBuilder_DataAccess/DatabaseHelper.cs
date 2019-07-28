@@ -16,6 +16,8 @@ namespace MTG_DeckBuilder_DataAccess
 {
     public class DatabaseHelper
     {
+        public static int UserID { get; set; }
+
         public static async Task<MTG_Set> GetSetAsync(string setCode)
         {
             using (var context = new MtgContext())
@@ -112,6 +114,35 @@ namespace MTG_DeckBuilder_DataAccess
             }
 
             return result;
+        }
+
+        public static async Task<MTG_Card> GetCardFromNameAndSet(string name, string setCode)
+        {
+            MTG_Card mtgCard = new MTG_Card();
+
+            using (var context = new MtgContext())
+            {
+                var query = from c in context.MTG_Card
+                    where c.name == name && c.MTG_Set.code == setCode
+                    select c;
+
+
+                var card = await query.FirstOrDefaultAsync();
+                if (card != null)
+                    mtgCard = card;
+                else
+                {
+                    //get first card of that name
+                    query = from c in context.MTG_Card
+                    where c.name == name
+                    select c;
+
+
+                    mtgCard = await query.FirstOrDefaultAsync();
+                }
+            }
+
+            return mtgCard;
         }
     }
 }

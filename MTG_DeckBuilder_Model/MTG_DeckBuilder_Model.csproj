@@ -50,9 +50,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PagedResult.cs" />
     <Compile Include="MtgContext.cs" />
     <Compile Include="MTG_Card.cs" />
+    <Compile Include="MTG_Card.partial.cs" />
     <Compile Include="MTG_Card_Legalities.cs" />
     <Compile Include="MTG_Card_Subtype.cs" />
     <Compile Include="MTG_Card_Supertype.cs" />
@@ -67,6 +67,8 @@
     <Compile Include="MTG_SubType.cs" />
     <Compile Include="MTG_SuperType.cs" />
     <Compile Include="MTG_Type.cs" />
+    <Compile Include="MTG_User.cs" />
+    <Compile Include="PagedResult.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

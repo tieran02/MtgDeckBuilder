@@ -40,6 +40,7 @@
     <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -56,9 +57,14 @@
   <ItemGroup>
     <Compile Include="Commands\AddCardToDeckCommand.cs" />
     <Compile Include="Commands\ChangeCardsPageCommand.cs" />
+    <Compile Include="Commands\LoginCommand.cs" />
+    <Compile Include="Commands\RegisterCommand.cs" />
     <Compile Include="Commands\RemoveCardFromDeck.cs" />
     <Compile Include="Commands\ToggleFilterCommand.cs" />
     <Compile Include="DeckBuilderVM.cs" />
+    <Compile Include="Helpers\DeckParser.cs" />
+    <Compile Include="Helpers\PasswordStore.cs" />
+    <Compile Include="LoginVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -26,6 +26,7 @@ namespace MTG_DeckBuilder_Model
         public virtual DbSet<MTG_SubType> MTG_SubType { get; set; }
         public virtual DbSet<MTG_SuperType> MTG_SuperType { get; set; }
         public virtual DbSet<MTG_Type> MTG_Type { get; set; }
+        public virtual DbSet<MTG_User> MTG_User { get; set; }
         public virtual DbSet<MTG_Deck_Card> MTG_Deck_Card { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -75,7 +76,7 @@ namespace MTG_DeckBuilder_Model
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<MTG_Card>()
-                .HasMany(e => e.MTG_Card_Type)
+                .HasMany(e => e.MTG_Card_Subtype)
                 .WithRequired(e => e.MTG_Card)
                 .HasForeignKey(e => e.MTG_Card_id)
                 .WillCascadeOnDelete(false);
@@ -87,13 +88,13 @@ namespace MTG_DeckBuilder_Model
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MTG_Card>()
-                .HasMany(e => e.MTG_Card_Legalities)
+                .HasMany(e => e.MTG_Card_Type)
                 .WithRequired(e => e.MTG_Card)
                 .HasForeignKey(e => e.MTG_Card_id)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MTG_Card>()
-                .HasMany(e => e.MTG_Card_Subtype)
+                .HasMany(e => e.MTG_Card_Legalities)
                 .WithRequired(e => e.MTG_Card)
                 .HasForeignKey(e => e.MTG_Card_id)
                 .WillCascadeOnDelete(false);
@@ -118,6 +119,14 @@ namespace MTG_DeckBuilder_Model
 
             modelBuilder.Entity<MTG_Card_Type>()
                 .Property(e => e.MTG_Card_id)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MTG_Deck>()
+                .Property(e => e.name)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MTG_Deck>()
+                .Property(e => e.description)
                 .IsUnicode(false);
 
             modelBuilder.Entity<MTG_Deck>()
@@ -216,6 +225,28 @@ namespace MTG_DeckBuilder_Model
                 .HasMany(e => e.MTG_Card_Type)
                 .WithRequired(e => e.MTG_Type)
                 .HasForeignKey(e => e.MTG_Type_id)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<MTG_User>()
+                .Property(e => e.username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MTG_User>()
+                .Property(e => e.email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MTG_User>()
+                .Property(e => e.hash)
+                .IsFixedLength();
+
+            modelBuilder.Entity<MTG_User>()
+                .Property(e => e.salt)
+                .IsFixedLength();
+
+            modelBuilder.Entity<MTG_User>()
+                .HasMany(e => e.MTG_Deck)
+                .WithRequired(e => e.MTG_User)
+                .HasForeignKey(e => e.MTG_User_idMTG_User)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MTG_Deck_Card>()
