@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MTG_DeckBuilder.Pages;
+using MTG_DeckBuilder_ViewModel;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -23,7 +25,8 @@ namespace MTG_DeckBuilder
         public DeckBuilderWindow()
         {
             InitializeComponent();
-
+            var vm = (DeckBuilderVM)ContentPanel.DataContext;
+            ContentFrame.Content = new CardViewPage(vm);
         }
 
         private void ExitMenuItem_OnClick(object sender, RoutedEventArgs e)
