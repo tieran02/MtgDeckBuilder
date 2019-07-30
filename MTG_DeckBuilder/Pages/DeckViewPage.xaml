@@ -35,13 +35,14 @@
                      HorizontalContentAlignment="Stretch"
                      ScrollViewer.VerticalScrollBarVisibility="Disabled"
                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     SelectedItem="{Binding SelectedDeck, Mode=OneWayToSource}"
                      Background="SlateGray"
                      BorderThickness="0"
                      VirtualizingStackPanel.IsVirtualizing ="False">
 
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="MouseDoubleClick">
-                    <!--<i:InvokeCommandAction Command="{Binding AddCardToDeckCommand}" CommandParameter="{Binding SelectedCard}"/>-->
+                    <i:InvokeCommandAction Command="{Binding LoadDeckCommand}" CommandParameter="{Binding SelectedDeck.idMTG_Deck}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
 

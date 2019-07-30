@@ -176,15 +176,33 @@ namespace MTG_DeckBuilder_DataAccess
         {
             using (var context = new MtgContext())
             {
-                context.MTG_Deck.Add(deck);
+                MTG_Deck newDeck = new MTG_Deck();
+                newDeck.name = deck.name;
+                newDeck.description = deck.description;
+                newDeck.MTG_User_idMTG_User = deck.MTG_User_idMTG_User;
+
+                context.MTG_Deck.Add(newDeck);
 
                 foreach (var card in cards)
                 {
                     var deckCard = new MTG_Deck_Card();
                     deckCard.MTG_Card_id = card.id;
-                    deck.MTG_Deck_Card.Add(deckCard);
+                    newDeck.MTG_Deck_Card.Add(deckCard);
                 }
                 return context.SaveChanges();
+            }
+        }
+
+        public static async Task<MTG_Deck> GetDeckAsync(int id)
+        {
+            using (var context = new MtgContext())
+            {
+                var query = context.MTG_Deck
+                    .Include(dc => dc.MTG_Deck_Card.Select(c=>c.MTG_Card))
+                    .Where(d => d.idMTG_Deck == id);
+                    
+
+                return await query.FirstOrDefaultAsync();
             }
         }
     }
