@@ -144,5 +144,48 @@ namespace MTG_DeckBuilder_DataAccess
 
             return mtgCard;
         }
+
+        public static async Task<PagedResult<MTG_Deck>> GetUserDecks(int userID, int page)
+        {
+            const int PAGE_SIZE = 8;
+            var result = new PagedResult<MTG_Deck>();
+            result.CurrentPage = page;
+            result.PageSize = PAGE_SIZE;
+
+            using (var context = new MtgContext())
+            {
+                var query = from d in context.MTG_Deck
+                            where d.MTG_User.idMTG_User == userID
+                            select d;
+
+
+                result.RowCount = query.Count();
+                var pageCount = (double)result.RowCount / PAGE_SIZE;
+                result.PageCount = (int)Math.Ceiling(pageCount);
+
+                var skip = (page - 1) * PAGE_SIZE;
+
+
+                result.Results = await query.OrderBy(d => d.name).Skip(skip).Take(PAGE_SIZE).ToListAsync();
+            }
+
+            return result;
+        }
+
+        public static int InsertDeck(List<MTG_Card> cards ,MTG_Deck deck)
+        {
+            using (var context = new MtgContext())
+            {
+                context.MTG_Deck.Add(deck);
+
+                foreach (var card in cards)
+                {
+                    var deckCard = new MTG_Deck_Card();
+                    deckCard.MTG_Card_id = card.id;
+                    deck.MTG_Deck_Card.Add(deckCard);
+                }
+                return context.SaveChanges();
+            }
+        }
     }
 }

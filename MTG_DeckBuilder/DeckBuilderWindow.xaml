@@ -102,12 +102,13 @@
                                      DockPanel.Dock="Top"
                                      Height="150"/>
 
-            <TextBox Text="Name of deck"
+            <TextBox Text="{Binding CurrentDeck.name, Mode=TwoWay}"
                      FontSize="16"
                      DockPanel.Dock="Top"/>
             <Button Content="Create Deck"
                     Height="30"
-                    DockPanel.Dock="Bottom"/>
+                    DockPanel.Dock="Bottom"
+                    Command="{Binding CreateDeckCommand}"/>
             <TextBlock Text="{Binding CurrentDeckCards.Count}"
                        DockPanel.Dock="Bottom"
                        TextAlignment="Center"/>
@@ -131,13 +132,17 @@
 
         <DockPanel >
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-                <Button Content="Card View"/>
-                <Button Content="Deck View"/>
+                <Button x:Name="CardViewButton"
+                        Content="Card View"
+                        Click="CardViewButton_Click"/>
+                <Button x:Name="DeckViewButton"
+                        Content="Deck View"
+                        Click="DeckViewButton_Click"/>
                 <Button Content="Set View"/>
             </StackPanel>
 
 
-            <Frame x:Name="ContentFrame"/>
+            <Frame NavigationUIVisibility="Hidden"  x:Name="ContentFrame"/>
         </DockPanel>
     </DockPanel>
 </Window>

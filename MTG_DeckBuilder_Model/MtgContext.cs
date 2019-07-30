@@ -18,6 +18,7 @@ namespace MTG_DeckBuilder_Model
         public virtual DbSet<MTG_Card_Supertype> MTG_Card_Supertype { get; set; }
         public virtual DbSet<MTG_Card_Type> MTG_Card_Type { get; set; }
         public virtual DbSet<MTG_Deck> MTG_Deck { get; set; }
+        public virtual DbSet<MTG_Deck_Card> MTG_Deck_Card { get; set; }
         public virtual DbSet<MTG_Format> MTG_Format { get; set; }
         public virtual DbSet<MTG_Legality> MTG_Legality { get; set; }
         public virtual DbSet<MTG_Rarity> MTG_Rarity { get; set; }
@@ -27,7 +28,6 @@ namespace MTG_DeckBuilder_Model
         public virtual DbSet<MTG_SuperType> MTG_SuperType { get; set; }
         public virtual DbSet<MTG_Type> MTG_Type { get; set; }
         public virtual DbSet<MTG_User> MTG_User { get; set; }
-        public virtual DbSet<MTG_Deck_Card> MTG_Deck_Card { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -135,6 +135,10 @@ namespace MTG_DeckBuilder_Model
                 .HasForeignKey(e => e.MTG_Deck_idMTG_Deck)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<MTG_Deck_Card>()
+                .Property(e => e.MTG_Card_id)
+                .IsUnicode(false);
+
             modelBuilder.Entity<MTG_Format>()
                 .Property(e => e.formatName)
                 .IsUnicode(false);
@@ -236,11 +240,11 @@ namespace MTG_DeckBuilder_Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<MTG_User>()
-                .Property(e => e.hash)
+                .Property(e => e.salt)
                 .IsFixedLength();
 
             modelBuilder.Entity<MTG_User>()
-                .Property(e => e.salt)
+                .Property(e => e.hash)
                 .IsFixedLength();
 
             modelBuilder.Entity<MTG_User>()
@@ -248,10 +252,6 @@ namespace MTG_DeckBuilder_Model
                 .WithRequired(e => e.MTG_User)
                 .HasForeignKey(e => e.MTG_User_idMTG_User)
                 .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<MTG_Deck_Card>()
-                .Property(e => e.MTG_Card_id)
-                .IsUnicode(false);
         }
     }
 }

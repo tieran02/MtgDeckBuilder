@@ -26,12 +26,12 @@ namespace MTG_DeckBuilder_Model
         public string email { get; set; }
 
         [Required]
-        [MaxLength(256)]
-        public byte[] hash { get; set; }
-
-        [Required]
         [MaxLength(32)]
         public byte[] salt { get; set; }
+
+        [Required]
+        [MaxLength(256)]
+        public byte[] hash { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MTG_Deck> MTG_Deck { get; set; }

@@ -57,6 +57,8 @@
   <ItemGroup>
     <Compile Include="Commands\AddCardToDeckCommand.cs" />
     <Compile Include="Commands\ChangeCardsPageCommand.cs" />
+    <Compile Include="Commands\ChangeDeckPageCommand.cs" />
+    <Compile Include="Commands\CreateDeckCommand.cs" />
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\RegisterCommand.cs" />
     <Compile Include="Commands\RemoveCardFromDeck.cs" />

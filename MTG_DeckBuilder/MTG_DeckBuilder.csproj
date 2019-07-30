@@ -86,8 +86,14 @@
     <Compile Include="Pages\CardViewPage.xaml.cs">
       <DependentUpon>CardViewPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DeckViewPage.xaml.cs">
+      <DependentUpon>DeckViewPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrols\CardViewUserControl.xaml.cs">
       <DependentUpon>CardViewUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrols\DeckViewUserControl.xaml.cs">
+      <DependentUpon>DeckViewUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Usercontrols\ManaCurveUserControl.xaml.cs">
       <DependentUpon>ManaCurveUserControl.xaml</DependentUpon>
@@ -115,7 +121,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\DeckViewPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Usercontrols\CardViewUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Usercontrols\DeckViewUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

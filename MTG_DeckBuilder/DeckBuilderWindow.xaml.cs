@@ -41,5 +41,19 @@ namespace MTG_DeckBuilder
             filterWindow.LoadFilters();
             filterWindow.ShowDialog();
         }
+
+        private void CardViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = (DeckBuilderVM)ContentPanel.DataContext;
+            ContentFrame.Content = new CardViewPage(vm);
+        }
+
+        private void DeckViewButton_Click(object sender, RoutedEventArgs e)
+        {
+            var vm = (DeckBuilderVM)ContentPanel.DataContext;
+            ContentFrame.Content = new DeckViewPage(vm);
+            //Get the user decks
+            vm.GetDecks(1);
+        }
     }
 }
