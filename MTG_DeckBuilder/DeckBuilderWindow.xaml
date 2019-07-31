@@ -102,7 +102,7 @@
                                      DockPanel.Dock="Top"
                                      Height="150"/>
 
-            <TextBox Text="{Binding CurrentDeck.name, Mode=TwoWay}"
+            <TextBox Text="{Binding CurrentDeck.name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      FontSize="16"
                      DockPanel.Dock="Top"/>
             <Button Content="Create Deck"

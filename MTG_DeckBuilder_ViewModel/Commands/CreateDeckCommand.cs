@@ -25,7 +25,7 @@ namespace MTG_DeckBuilder_ViewModel.Commands
 
         public void Execute(object parameter)
         {
-            int inserted = VM.InsertNewDeck();
+            int inserted = VM.CreateDeck();
         }
 
     }

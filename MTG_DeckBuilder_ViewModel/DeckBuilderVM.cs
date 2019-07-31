@@ -110,7 +110,7 @@ namespace MTG_DeckBuilder_ViewModel
             }
         }
 
-        public int InsertNewDeck()
+        public int CreateDeck()
         {
             CurrentDeck.MTG_User_idMTG_User = DatabaseHelper.UserID;
             var inserted = DatabaseHelper.InsertDeck(CurrentDeckCards.ToList(), CurrentDeck);
@@ -131,7 +131,7 @@ namespace MTG_DeckBuilder_ViewModel
             CurrentDeck.name = deck.name;
             CurrentDeck.description = deck.description;
             CurrentDeck.MTG_Deck_Card = deck.MTG_Deck_Card;
-
+            CurrentDeck.idMTG_Deck = deckID;
         }
 
         public async void RemoveDeck(int deckId)

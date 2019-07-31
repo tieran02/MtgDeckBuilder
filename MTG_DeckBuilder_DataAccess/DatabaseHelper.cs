@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net.Sockets;
@@ -176,19 +177,40 @@ namespace MTG_DeckBuilder_DataAccess
         {
             using (var context = new MtgContext())
             {
-                MTG_Deck newDeck = new MTG_Deck();
-                newDeck.name = deck.name;
-                newDeck.description = deck.description;
-                newDeck.MTG_User_idMTG_User = deck.MTG_User_idMTG_User;
-
-                context.MTG_Deck.Add(newDeck);
-
-                foreach (var card in cards)
+                //check if the deck has an ID then we just update that deck
+                if (deck.idMTG_Deck > 0)
                 {
-                    var deckCard = new MTG_Deck_Card();
-                    deckCard.MTG_Card_id = card.id;
-                    newDeck.MTG_Deck_Card.Add(deckCard);
+                    //TODO: check if to update or delete or add entries instead of removing all and adding them back again
+                    var existingDeck = context.MTG_Deck.FirstOrDefault(d => d.idMTG_Deck == deck.idMTG_Deck);
+                    existingDeck.name = deck.name;
+                    existingDeck.description = deck.description;
+
+                    context.MTG_Deck_Card.RemoveRange(context.MTG_Deck_Card.Where(d => d.MTG_Deck_idMTG_Deck == deck.idMTG_Deck));
+
+                    foreach (var card in cards)
+                    {
+                        var deckCard = new MTG_Deck_Card();
+                        deckCard.MTG_Card_id = card.id;
+                        existingDeck.MTG_Deck_Card.Add(deckCard);
+                    }
                 }
+                else //Else insert new deck
+                {
+                    MTG_Deck newDeck = new MTG_Deck();
+                    newDeck.name = deck.name;
+                    newDeck.description = deck.description;
+                    newDeck.MTG_User_idMTG_User = deck.MTG_User_idMTG_User;
+
+                    context.MTG_Deck.Add(newDeck);
+
+                    foreach (var card in cards)
+                    {
+                        var deckCard = new MTG_Deck_Card();
+                        deckCard.MTG_Card_id = card.id;
+                        newDeck.MTG_Deck_Card.Add(deckCard);
+                    }
+                }
+
                 return context.SaveChanges();
             }
         }
