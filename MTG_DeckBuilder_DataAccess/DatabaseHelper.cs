@@ -205,5 +205,24 @@ namespace MTG_DeckBuilder_DataAccess
                 return await query.FirstOrDefaultAsync();
             }
         }
+
+        public static async Task<int> RemoveDeck(int id)
+        {
+            using (var context = new MtgContext())
+            {
+                var query = from d in context.MTG_Deck
+                    where d.idMTG_Deck == id
+                    select d;
+
+                var deck = await query.FirstOrDefaultAsync();
+                if (deck != null)
+                {
+                    context.MTG_Deck.Remove(deck);
+                    return await context.SaveChangesAsync();
+                }
+
+                return 0;
+            }
+        }
     }
 }

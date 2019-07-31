@@ -25,9 +25,9 @@ namespace MTG_DeckBuilder.Pages
 
         public CardViewPage(DeckBuilderVM vm)
         {
-            VM = vm;
-            DataContext = vm;
             InitializeComponent();
+            VM = vm;
+            DataContext = VM;
         }
     }
 }

@@ -63,6 +63,7 @@
     <Compile Include="Commands\LoginCommand.cs" />
     <Compile Include="Commands\RegisterCommand.cs" />
     <Compile Include="Commands\RemoveCardFromDeck.cs" />
+    <Compile Include="Commands\RemoveDeckCommand.cs" />
     <Compile Include="Commands\ToggleFilterCommand.cs" />
     <Compile Include="DeckBuilderVM.cs" />
     <Compile Include="Helpers\DeckParser.cs" />

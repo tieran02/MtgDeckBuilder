@@ -13,7 +13,7 @@
     <Window.Resources>
         <vm:DeckBuilderVM x:Key="vm"/>
     </Window.Resources>
-    
+        
     <DockPanel x:Name="ContentPanel"  DataContext="{StaticResource vm}">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="File">

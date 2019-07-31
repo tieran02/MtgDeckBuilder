@@ -8,7 +8,8 @@
       xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="DeckViewPage">
+      Title="DeckViewPage"
+      x:Name="DeckPage">
 
     <DockPanel Background="SlateGray">
         <Button DockPanel.Dock="Left" Height="50" Margin="5" Command="{Binding DeckPageCommand}" CommandParameter="-1">
@@ -53,7 +54,7 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <uc:DeckViewUserControl/>
+                    <uc:DeckViewUserControl Deck="{Binding}" RemoveDeckCommand="{Binding VM.RemoveDeckCommand, ElementName=DeckPage}"/>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

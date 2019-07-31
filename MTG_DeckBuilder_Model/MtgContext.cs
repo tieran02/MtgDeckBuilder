@@ -132,8 +132,7 @@ namespace MTG_DeckBuilder_Model
             modelBuilder.Entity<MTG_Deck>()
                 .HasMany(e => e.MTG_Deck_Card)
                 .WithRequired(e => e.MTG_Deck)
-                .HasForeignKey(e => e.MTG_Deck_idMTG_Deck)
-                .WillCascadeOnDelete(false);
+                .HasForeignKey(e => e.MTG_Deck_idMTG_Deck);
 
             modelBuilder.Entity<MTG_Deck_Card>()
                 .Property(e => e.MTG_Card_id)

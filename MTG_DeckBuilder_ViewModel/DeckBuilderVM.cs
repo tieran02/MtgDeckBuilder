@@ -42,6 +42,7 @@ namespace MTG_DeckBuilder_ViewModel
         public ChangeDeckPageCommand DeckPageCommand { get; set; }
         public CreateDeckCommand CreateDeckCommand { get; set; }
         public LoadDeckCommand LoadDeckCommand { get; set; }
+        public RemoveDeckCommand RemoveDeckCommand { get; set; }
 
 
         public ToggleFilterCommand ToggleFilterCommand { get; set; }
@@ -60,6 +61,7 @@ namespace MTG_DeckBuilder_ViewModel
             ToggleFilterCommand = new ToggleFilterCommand(this);
             CreateDeckCommand = new CreateDeckCommand(this);
             LoadDeckCommand = new LoadDeckCommand(this);
+            RemoveDeckCommand = new RemoveDeckCommand(this);
 
             //load cards with no filters (This will only fetch the first 8 cards within the database)
             CardFilters = CardFilters.NONE;
@@ -129,6 +131,13 @@ namespace MTG_DeckBuilder_ViewModel
             CurrentDeck.name = deck.name;
             CurrentDeck.description = deck.description;
             CurrentDeck.MTG_Deck_Card = deck.MTG_Deck_Card;
+
+        }
+
+        public async void RemoveDeck(int deckId)
+        {
+            await DatabaseHelper.RemoveDeck(deckId);
+            GetDecks(1);
 
         }
     }

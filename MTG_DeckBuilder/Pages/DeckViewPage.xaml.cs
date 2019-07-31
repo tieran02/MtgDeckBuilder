@@ -21,13 +21,14 @@ namespace MTG_DeckBuilder.Pages
     /// </summary>
     public partial class DeckViewPage : Page
     {
-        public DeckBuilderVM VM { get; private set; }
+        public DeckBuilderVM VM { get; set; }
 
         public DeckViewPage(DeckBuilderVM vm)
         {
             VM = vm;
-            DataContext = vm;
+            DataContext = VM;
             InitializeComponent();
+
         }
     }
 }
